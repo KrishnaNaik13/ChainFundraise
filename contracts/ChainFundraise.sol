@@ -97,3 +97,29 @@ contract ChainFundraise is ReentrancyGuard {
         campaign.deadline += additionalTime;
     }
 }
+function getCampaignDetails(uint256 campaignId)
+    external
+    view
+    returns (
+        address creator,
+        string memory title,
+        uint256 goalAmount,
+        uint256 deadline,
+        uint256 totalRaised,
+        uint256 minContribution,
+        uint256 backersCount,
+        CampaignState state
+    )
+{
+    Campaign storage campaign = campaigns[campaignId];
+    return (
+        campaign.creator,
+        campaign.title,
+        campaign.goalAmount,
+        campaign.deadline,
+        campaign.totalRaised,
+        campaign.minContribution,
+        campaign.backersCount,
+        campaign.state
+    );
+}
