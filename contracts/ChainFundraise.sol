@@ -99,6 +99,7 @@ contract ChainFundraise is ReentrancyGuard {
         campaign.deadline += additionalTime;
     }
 }
+
 function getCampaignDetails(uint256 campaignId)
     external
     view
