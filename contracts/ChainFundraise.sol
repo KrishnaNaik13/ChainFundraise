@@ -46,6 +46,7 @@ contract ChainFundraise is ReentrancyGuard {
         emit CampaignCreated(campaignId, msg.sender);
     }
 
+
     function contribute(uint256 campaignId) external payable nonReentrant {
         Campaign storage campaign = campaigns[campaignId];
         require(campaign.state == CampaignState.Active, "Campaign not active");
