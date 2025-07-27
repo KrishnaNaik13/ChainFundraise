@@ -17,6 +17,8 @@ contract ChainFundraise is ReentrancyGuard {
         CampaignState state;
     }
 
+
+
     mapping(uint256 => Campaign) public campaigns;
     mapping(uint256 => mapping(address => uint256)) public contributions;
     uint256 public campaignCount;
