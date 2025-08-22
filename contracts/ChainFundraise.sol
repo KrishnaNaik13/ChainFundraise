@@ -32,6 +32,7 @@ contract ChainFundraise is ReentrancyGuard {
     event FundsClaimed(uint256 indexed campaignId, uint256 amount);
     event RefundIssued(uint256 indexed campaignId, address backer, uint256 amount);
 
+
     function createCampaign(
         string memory _title,
         uint256 _goalAmount,
