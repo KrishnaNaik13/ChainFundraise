@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChainFundraise - Transparent Crowdfunding</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.1/ethers.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🔗 ChainFundraise</h1>
+            <p>Transparent Crowdfunding with Refund Guarantees</p>
+            <div class="wallet-section">
+                <button id="connectWallet" class="btn btn-primary">Connect Wallet</button>
+                <div id="walletInfo" class="wallet-info" style="display: none;">
+                    <span id="walletAddress"></span>
+                    <span id="walletBalance"></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contract Info -->
+        <section class="contract-info">
+            <h3>Contract Information</h3>
+            <p><strong>Address:</strong> <span class="contract-address">0x385Fe3499Aa649fFD7c59aA5cb2EB1B9763Fb490</span></p>
+            <div class="status-indicators">
+                <div id="contractStatus" class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Checking connection...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Create Campaign Section -->
+            <section class="card">
+                <h2>🚀 Create Campaign</h2>
+                <form id="createCampaignForm">
+                    <div class="form-group">
+                        <label for="campaignTitle">Campaign Title</label>
+                        <input type="text" id="campaignTitle" placeholder="Enter campaign title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fundingGoal">Funding Goal (ETH)</label>
+                        <input type="number" id="fundingGoal" step="0.001" placeholder="1.0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="campaignDuration">Duration (days)</label>
+                        <input type="number" id="campaignDuration" placeholder="30" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="minContribution">Minimum Contribution (ETH)</label>
+                        <input type="number" id="minContribution" step="0.001" placeholder="0.01" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Campaign</button>
+                </form>
+            </section>
+
+            <!-- Campaign List Section -->
+            <section class="card">
+                <h2>📋 Active Campaigns</h2>
+                <div class="campaign-filters">
+                    <button class="btn btn-secondary" onclick="loadCampaigns()">Refresh</button>
+                    <input type="text" id="campaignSearch" placeholder="Search campaigns...">
+                </div>
+                <div id="campaignsList" class="campaigns-list">
+                    <div class="loading">Loading campaigns...</div>
+                </div>
+            </section>
+
+            <!-- Contribute Section -->
+            <section class="card">
+                <h2>💰 Contribute to Campaign</h2>
+                <div class="form-group">
+                    <label for="campaignId">Campaign ID</label>
+                    <input type="number" id="campaignId" placeholder="Enter campaign ID" required>
+                </div>
+                <div class="form-group">
+                    <label for="contributionAmount">Contribution Amount (ETH)</label>
+                    <input type="number" id="contributionAmount" step="0.001" placeholder="0.1" required>
+                </div>
+                <button id="contributeBtn" class="btn btn-success">Contribute</button>
+            </section>
+
+            <!-- Withdraw/Refund Section -->
+            <section class="card">
+                <h2>🔄 Manage Funds</h2>
+                <div class="action-buttons">
+                    <div class="form-group">
+                        <label for="manageCampaignId">Campaign ID</label>
+                        <input type="number" id="manageCampaignId" placeholder="Enter campaign ID" required>
+                    </div>
+                    <button id="withdrawBtn" class="btn btn-warning">Withdraw Funds (Creator)</button>
+                    <button id="refundBtn" class="btn btn-danger">Claim Refund</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Transaction Status -->
+        <div id="transactionStatus" class="transaction-status" style="display: none;">
+            <div class="status-content">
+                <div class="spinner"></div>
+                <p id="statusMessage">Processing transaction...</p>
+                <a id="etherscanLink" href="#" target="_blank" style="display: none;">View on Etherscan</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
