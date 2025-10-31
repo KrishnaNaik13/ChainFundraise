@@ -1,5 +1,6 @@
 // ChainFundraise JavaScript Application
 
+
 class ChainFundraise {
     constructor() {
         this.provider = null;
@@ -778,4 +779,5 @@ window.addEventListener('unhandledrejection', function(event) {
 // Export for potential module use
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = ChainFundraise;
+
 }
